@@ -1,0 +1,11 @@
+--创建默认表空间
+create tablespace test1_tablespace datafile 'test1file.dbf' size 10m;
+
+--创建临时表空间
+create temporary tablespace temptest1_tablespace tempfile 'tempfile1.dbf' size 10m;
+
+--查看表空间数据文件的位置
+select file_name from dba_data_files where tablespace_name = 'TEST1_TABLESPACE';
+
+--查看临时表空间数据文件的位置
+select file_name from dba_temp_files where tablespace_name = 'TEMPTEST1_TABLESPACE';

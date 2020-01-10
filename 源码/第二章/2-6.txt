@@ -1,0 +1,20 @@
+--查看管理员级别的表空间描述信息
+select tablespace_name from dba_tablespaces;
+
+
+--查看普通用户级别的表空间描述信息
+select tablespace_name from user_tablespaces;
+
+
+--dba_users针对管理员级别的数据字典，用于查看数据库所有用户的用户信息
+select username,default_tablespace,temporary_tablespace from dba_users;
+
+
+--user_users针对普通用户级别的数据字典，用于查看当前登录用户的用户信息
+select username,default_tablespace,temporary_tablespace from user_users;
+
+
+--设置用户默认和临时表空间
+alter user user01 
+default tablespace TEST1_TABLESPACE 
+temporary tablespace TEMPTEST1_TABLESPACE;

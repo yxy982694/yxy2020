@@ -1,0 +1,38 @@
+--查看所有系统权限
+select * from system_privilege_map;
+
+--创建用户
+create user user02 identified by pass02;
+
+--给用户赋予一个创建会话的权限
+grant create session to user01;
+
+--通过角色给用户赋予一个系统权限
+create role manager;
+
+grant create table, create sequence to manager;
+
+grant manager to user01;
+
+
+--查看所有对象权限
+select * from table_privilege_map;
+
+
+--通过角色给用户赋予一个对象权限
+create role manager01;
+
+grant select,update,insert on scott.emp to manager01;
+
+grant manager01 to user01;
+
+--测试对象权限
+conn user01/pass01
+
+select * from scott.emp;(成功)
+
+select * from scott.dept;（失败)
+
+--回收对象权限
+revoke select,update,insert on scott.emp from manager01;
+

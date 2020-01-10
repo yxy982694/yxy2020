@@ -1,0 +1,31 @@
+cmd-->sqlplus-->提示输入用户名、密码的登录方式
+
+sqlplus  /nolog  : 进入sqlplus界面但不登录
+
+
+--sys用户以sysdba的身份连接数据库，连接时指定数据库连接标识符@orcl
+conn sys/oracle @orcl as sysdba
+
+
+--sys用户以sysdba的身份连接数据库，连接时没有指定数据库连接标识符，此时将连接默认的数据库
+conn sys/oracle as sysdba
+show user
+
+
+--system用户直接登录数据库
+conn system/oracle 
+show user
+
+
+--system用户以sysdba的身份登录数据库
+conn system/oracle as sysdba 
+show user
+
+
+--不用指定用户名和密码，直接以sysdba的身份登录数据库
+conn /as sysdba 
+
+
+--给scott用户解锁
+alter user scott account unlock
+conn scott/tiger

@@ -1,0 +1,35 @@
+--更改表空间的状态为脱机状态
+alter tablespace test1_tablespace offline;
+
+
+--更改表空间的状态为联机状态
+alter tablespace test1_tablespace online;
+
+
+
+--更改表空间的状态为只读状态
+alter tablespace test1_tablespace read only;
+
+
+--更改表空间的状态为可读写状态
+alter tablespace test1_tablespace read write;
+
+
+--查看表空间的状态
+select status from dba_tablespaces where tablespace_name = 'TEST1_TABLESPACE';
+
+
+--增加数据文件
+alter tablespace test1_tablespace add datafile 'test2_file.dbf' size 10m;
+
+
+--查看表空间的数据文件
+select file_name from dba_data_files where tablespace_name='TEST1_TABLESPACE';
+
+
+--删除数据文件
+alter tablespace test1_tablespace drop datafile 'test2_file.dbf';
+
+
+--删除表空间
+drop tablespace test1_tablespace including contents;

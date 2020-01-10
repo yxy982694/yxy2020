@@ -1,0 +1,23 @@
+--创建用户
+create user yan identified by test default tablespace test1_tablespace temporary tablespace temptest1_tablespace;
+
+
+--查看创建的用户
+select username from dba_users;
+
+
+--给刚创建的用户授权
+grant connect to yan;
+
+
+--如果想更改用户的密码，我们可以通过
+alter user yan identified by t123;
+
+
+
+--如果管理员不希望某用户登录， 但又不打算删除某用户，可以将此用户锁定
+alter user yan account lock;
+
+
+--如果这个用户不用了，想删除这个用户，可以用drop
+drop user yan cascade;
